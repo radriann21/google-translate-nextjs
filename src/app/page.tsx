@@ -1,5 +1,12 @@
+"use client"
+import { Navigation } from "@/components/Navbar/Navigation"
+import { TranslatorContainer } from "@/components/TranslatorContainer/TranslatorContainer"
+
 export default function Home() {
   return (
-    <h1 className="text-3xl text-red-600">home</h1>
+    <>
+      <Navigation />
+      <TranslatorContainer />
+    </>
   )
 }
