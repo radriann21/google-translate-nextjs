@@ -10,9 +10,15 @@ export const LanguageContext = createContext<LanguageContextType | undefined>(
 const initialState: LanguageContextType = {
   from_language: "en",
   to_language: "es",
+  textToTranslate: "",
+  translatedText: "",
   handleSetFromLanguage: () => {},
   handleSetToLanguage: () => {},
   handleSwitchLanguages: () => {},
+  handleSetTextToTranslate: () => {},
+  handleSetTranslatedText: () => {},
+  handleCopyText: () => {},
+  handleSpeech: () => {}
 };
 
 interface LanguageProviderProps {
@@ -43,12 +49,40 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
     });
   };
 
+  const handleSetTextToTranslate = (text: string) => {
+    dispatch({
+      type: LanguageActionType.SetTextToTranslate,
+      payload: text
+    })
+  }
+
+  const handleSetTranslatedText = (text: string) => {
+    dispatch({
+      type: LanguageActionType.SetTranslatedText,
+      payload: text
+    })
+  }
+
+  const handleCopyText = () => {
+    navigator.clipboard.writeText(state.translatedText)
+  }
+
+  const handleSpeech = () => {
+    if (state.translatedText == '') return
+    const utterance = new SpeechSynthesisUtterance(state.translatedText)
+    speechSynthesis.speak(utterance)
+  }
+
   const value: LanguageContextType = {
     ...state,
     handleSetFromLanguage,
     handleSetToLanguage,
     handleSwitchLanguages,
-  };
+    handleSetTextToTranslate,
+    handleSetTranslatedText,
+    handleCopyText,
+    handleSpeech
+  }
 
   return (
     <LanguageContext.Provider value={value}>

@@ -9,14 +9,14 @@ export const LanguageReducer = (
     case LanguageActionType.SetFromLanguage:
       return {
         ...state,
-        from_language: action.payload!,
+        from_language: action.payload,
       };
 
     case LanguageActionType.SetToLanguage:
       if (action.payload !== AUTO_LANGUAGE) {
         return {
           ...state,
-          to_language: action.payload!,
+          to_language: action.payload,
         };
       }
       return state;
@@ -29,7 +29,21 @@ export const LanguageReducer = (
           ...state,
           from_language: state.to_language,
           to_language: state.from_language,
+          textToTranslate: state.translatedText,
+          translatedText: state.textToTranslate
         };
+
+      case LanguageActionType.SetTextToTranslate:
+        return {
+          ...state,
+          textToTranslate: action.payload
+        }
+
+      case LanguageActionType.SetTranslatedText:
+        return {
+          ...state,
+          translatedText: action.payload
+        }
 
     default:
       return state;
