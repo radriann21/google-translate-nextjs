@@ -19,7 +19,7 @@ export const TextareaComponent = ({ type, value, onChange, className, disabled, 
   const { translatedText, handleCopyText, handleSpeech } = useLanguageContext();
 
   const getPlaceholder = ({ type, loading }: { type: TextareaType, loading?: boolean }) => {
-    if (loading) return 'Loading...'
+    if (loading === true) return 'Loading...'
     if (type === TextareaType.From) return 'Write text...'
     if (!loading && type === TextareaType.To) return 'Translation'
   }

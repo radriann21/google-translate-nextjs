@@ -21,9 +21,6 @@ export const Navigation = () => {
               See Code
             </Button>
           </Link>
-          <Button variant="ghost" className="cursor-pointer">
-            <Moon />
-          </Button>
         </div>
       </div>
     </header>

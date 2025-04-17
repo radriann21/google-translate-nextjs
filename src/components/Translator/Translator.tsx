@@ -51,7 +51,7 @@ export const Translator = () => {
           type={TextareaType.From}
           value={textToTranslate}
           onChange={(value: string) => handleSetTextToTranslate(value)}
-          className="mt-2 resize-none w-[380px] h-[120px]"
+          className="mt-2 resize-none w-[380px] h-[120px] border-1 border-transparent dark:border-blue-300"
         />
       </div>
       <div className="col-span-1 flex justify-center">
@@ -83,7 +83,7 @@ export const Translator = () => {
           type={TextareaType.To}
           value={translatedText}
           onChange={() => {}}
-          className="mt-2 resize-none w-[380px] h-[120px] cursor-none bg-slate-200 border-none placeholder:text-slate-700"
+          className="mt-2 resize-none w-[380px] h-[120px] cursor-none bg-slate-200 border-none placeholder:text-slate-700 border-1 border-transparent dark:border-blue-300"
           disabled={true}
         />
       </div>
